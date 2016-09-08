@@ -5,6 +5,7 @@ alias cl='clear'
 
 # git
 alias gs='clear && git status'
+alias gco='git checkout'
 alias gmm='git checkout master && git merge '
 alias gpo='git push origin '
 alias gdc='git diff --cached -w'
