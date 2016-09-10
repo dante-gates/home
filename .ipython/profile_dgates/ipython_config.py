@@ -4,7 +4,8 @@ c = get_config()
 
 
 c.AliasManager.user_aliases = [
-    ('cl', 'clear')
+    ('cl', 'clear'),
+    ('clear', 'clear')
 ]
 
 #------------------------------------------------------------------------------
