@@ -8,6 +8,36 @@ case $- in
       *) return;;
 esac
 
+
+## USER BEGINS HERE ##
+
+echo 'executing' $(basename $BASH_SOURCE)
+
+iscauchy() {
+    if [ "$HOSTNAME" = "CAUCHY" ]; then
+	echo 1
+    else
+	echo 0
+    fi;
+}
+
+function isdca {
+    if [ "$HOSTNAME" = "NJ-1TKKFZ1-DCAL" ]; then
+	echo 1
+    else
+	echo 0
+    fi;
+}
+
+if [ "$(iscauchy)" -eq 1 ]; then
+    echo welcome CAUCHY
+elif [ "$(isdca)" -eq 1 ]; then
+    echo "welcome NJ-1TKKFZ1-DCAL"
+fi;
+
+## USER ENDS HERE ##
+
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -113,34 +143,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# directory aliases
-alias home='cd ~'
-alias f2015='cd /home/dante_gates/scl/2015f'
-alias labtech='cd /home/dante_gates/scl/2015f/lab_tech'
-alias datamin='cd /home/dante_gates/scl/2015f/data_mining'
-alias appmath='cd /home/dante_gates/scl/ 2015f/app_math'
-alias em='cd /home/dante_gates/scl/2015f/e_and_m'
-alias downloads='cd /home/dante_gates/downloads'
-alias knopp='cd /home/dante_gates/rsch/KNOPP'
-alias code='cd /home/dante_gates/code'
-# program aliases
-alias subl='gksu sublime'
-alias r='cd /etc/R; R'
-alias emacs='emacs -nw'
-# other aliases
-alias elv='ssh gatesd78@elvis.rowan.edu'
-alias shannon='ssh -i shannon.pem ubuntu@ec2-52-24-239-243.us-west-2.compute.amazonaws.com'
-alias connshannon='sftp -i shannon.pem ubuntu@ec2-52-24-239-243.us-west-2.compute.amazonaws.com'
-alias cmake='clear; make'
-
-# custom variables
-shannon2=ubuntu@ec2-54-173-42-29.compute-1.amazonaws.com
-PYTHONPATH=~/code/python/custpackages/:~/scl/2015f/data_mining/digit_rec/digits/scripts/python/${PYTHONPATH}
-export PYTHONPATH
 
 # git
-alias gs='clear; git status'
-alias gitshort='git status --short'
 parse_git_branch() {
  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
@@ -151,18 +155,64 @@ else
 fi
 unset color_prompt force_color_prompt
 
+
+## USER STARTS HERE ##
+
 alias mdtparse='python3 -m mdtpars'
 
 # added by Anaconda3 4.0.0 installer
-export PATH="/home/dante_gates/anaconda3/bin:$PATH"
+if [ "$(iscauchy)" -eq 1 ]; then
+    export PATH="/home/dante_gates/anaconda3/bin:$PATH"
+fi;
 
+# PYTHON
+if [ "$(iscauchy)" -eq 1 ]; then
+    export PYTHONPATH
+fi;
 
-# python
-alias jnb='jupyter notebook'
+# ipython
+function nbslides {
+    # convert notebook to slides
+    jupyter nbconvert "$@" --to slides --post serve
+}
 
 
 # emacs
 alias em='emacs'
 
+# shell utils
+function aalias {
+    # add alias to session and .bashrc simultaneously
+    alias "$@"
+    printf 'alias %q\n' "$@" >> ~/.bash_aliases
+}
 
-python ~/code/matrix/matrix.py
+
+# git
+function git-coa {
+    # check out file from git history as filename
+    usage="Usage:\n\tgit-coa <branch> <file> <destination>\n"
+    case $1 in
+	-h)
+	    echo -e $usage;
+	    return 0;
+	    ;;
+    esac
+    git show $1:$2 > $3
+}
+
+function git-merge-local {
+    # merge two local files
+    usage="Usage:\n\tgit-merge-local <f1> <f2>\n\tMerges f2 into f1"
+    case $1 in
+	-h)
+	    echo -e $usage;
+	    return 0;
+	    ;;
+    esac
+    touch git-merge-tmp
+    git merge-file $1 $2 git-merge-tmp
+    rm git-merge-tmp
+}
+
+    
