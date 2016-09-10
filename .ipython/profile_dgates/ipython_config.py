@@ -264,7 +264,7 @@ c.AliasManager.user_aliases = [
 # than working
 # c.TerminalInteractiveShell.cache_size = 1000
 
-Set the editor used by IPython (default to $EDITOR/vi/notepad).
+# Set the editor used by IPython (default to $EDITOR/vi/notepad).
 c.TerminalInteractiveShell.editor = 'emacsclient'
 
 # 
