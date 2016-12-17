@@ -29,10 +29,20 @@ function isdca {
     fi;
 }
 
+function iseuclid {
+    if [ "$HOSTNAME" = "euclid" ]; then
+	echo 1
+    else
+	echo 0
+    fi;
+}
+
 if [ "$(iscauchy)" -eq 1 ]; then
     echo welcome CAUCHY
 elif [ "$(isdca)" -eq 1 ]; then
     echo "welcome NJ-1TKKFZ1-DCAL"
+elif [ "$(iseuclid)" -eq 1 ]; then
+    echo "welcome euclid"	
 fi;
 
 ## USER ENDS HERE ##
@@ -215,4 +225,22 @@ function git-merge-local {
     rm git-merge-tmp
 }
 
-    
+if [ -f ~/home/.bash_aliases ]; then
+    . ~/home/.bash_aliases
+fi
+
+
+# virtualbox
+if [ "$(iseuclid)" -eq 1 ]; then
+    function cphost {
+	# copy file to vmoutput in host machine
+	if [ $2 ]; then
+	    cp $1 /media/sf_Documents/vmoutput/$2
+	else
+	    cp $1 /media/sf_Documents/vmoutput
+	fi;
+    }
+fi;
+
+
+
