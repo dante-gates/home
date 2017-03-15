@@ -21,14 +21,6 @@ iscauchy() {
     fi;
 }
 
-function isdca {
-    if [ "$HOSTNAME" = "NJ-1TKKFZ1-DCAL" ]; then
-	echo 1
-    else
-	echo 0
-    fi;
-}
-
 function iseuclid {
     if [ "$HOSTNAME" = "euclid" ]; then
 	echo 1
@@ -39,8 +31,6 @@ function iseuclid {
 
 if [ "$(iscauchy)" -eq 1 ]; then
     echo welcome CAUCHY
-elif [ "$(isdca)" -eq 1 ]; then
-    echo "welcome NJ-1TKKFZ1-DCAL"
 elif [ "$(iseuclid)" -eq 1 ]; then
     echo "welcome euclid"	
 fi;
@@ -224,23 +214,6 @@ function git-merge-local {
     git merge-file $1 $2 git-merge-tmp
     rm git-merge-tmp
 }
-
-if [ -f ~/home/.bash_aliases ]; then
-    . ~/home/.bash_aliases
-fi
-
-
-# virtualbox
-if [ "$(iseuclid)" -eq 1 ]; then
-    function cphost {
-	# copy file to vmoutput in host machine
-	if [ $2 ]; then
-	    cp $1 /media/sf_Documents/vmoutput/$2
-	else
-	    cp $1 /media/sf_Documents/vmoutput
-	fi;
-    }
-fi;
 
 
 
