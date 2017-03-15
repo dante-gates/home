@@ -149,6 +149,8 @@ unset color_prompt force_color_prompt
 
 ## USER STARTS HERE ##
 
+if [ -f ~/bin ]; then export PATH=~/bin:$PATH; fi
+
 alias mdtparse='python3 -m mdtpars'
 
 # added by Anaconda3 4.0.0 installer
@@ -205,6 +207,3 @@ function git-merge-local {
     git merge-file $1 $2 git-merge-tmp
     rm git-merge-tmp
 }
-
-
-
