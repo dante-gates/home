@@ -149,7 +149,7 @@ unset color_prompt force_color_prompt
 
 ## USER STARTS HERE ##
 
-if [ -f ~/bin ]; then export PATH=~/bin:$PATH; fi
+if [ -d ~/bin ]; then export PATH=~/bin:$PATH; fi
 
 alias mdtparse='python3 -m mdtpars'
 
@@ -162,6 +162,8 @@ fi;
 if [ "$(iscauchy)" -eq 1 ]; then
     export PYTHONPATH
 fi;
+
+export PIP_REQUIRE_VIRTUALENV=true
 
 # ipython
 function nbslides {
