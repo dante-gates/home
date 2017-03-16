@@ -163,6 +163,8 @@ if [ "$(iscauchy)" -eq 1 ]; then
     export PYTHONPATH
 fi;
 
+export PIP_REQUIRE_VIRTUALENV=true
+
 # ipython
 function nbslides {
     # convert notebook to slides
