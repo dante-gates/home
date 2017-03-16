@@ -21,14 +21,6 @@ iscauchy() {
     fi;
 }
 
-function isdca {
-    if [ "$HOSTNAME" = "NJ-1TKKFZ1-DCAL" ]; then
-	echo 1
-    else
-	echo 0
-    fi;
-}
-
 function iseuclid {
     if [ "$HOSTNAME" = "euclid" ]; then
 	echo 1
@@ -39,8 +31,6 @@ function iseuclid {
 
 if [ "$(iscauchy)" -eq 1 ]; then
     echo welcome CAUCHY
-elif [ "$(isdca)" -eq 1 ]; then
-    echo "welcome NJ-1TKKFZ1-DCAL"
 elif [ "$(iseuclid)" -eq 1 ]; then
     echo "welcome euclid"	
 fi;
@@ -133,15 +123,6 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -167,6 +148,8 @@ unset color_prompt force_color_prompt
 
 
 ## USER STARTS HERE ##
+
+if [ -f ~/bin ]; then export PATH=~/bin:$PATH; fi
 
 alias mdtparse='python3 -m mdtpars'
 
@@ -224,23 +207,3 @@ function git-merge-local {
     git merge-file $1 $2 git-merge-tmp
     rm git-merge-tmp
 }
-
-if [ -f ~/home/.bash_aliases ]; then
-    . ~/home/.bash_aliases
-fi
-
-
-# virtualbox
-if [ "$(iseuclid)" -eq 1 ]; then
-    function cphost {
-	# copy file to vmoutput in host machine
-	if [ $2 ]; then
-	    cp $1 /media/sf_Documents/vmoutput/$2
-	else
-	    cp $1 /media/sf_Documents/vmoutput
-	fi;
-    }
-fi;
-
-
-

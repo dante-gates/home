@@ -23,22 +23,6 @@ alias emacs='emacs -nw --load "~/home/.emacs"'
 alias em='emacs'
 
 # machine specific
-if [ "$(isdca)" -eq 1 ]; then
-    echo 'executing' $(basename $BASH_SOURCE) 'for NJ-1TKKFZ1-DCAL'
-    alias chase='cd C:/users/dgates/documents/commercial/chase-list-commercial-db'
-    alias pa='cd C:/users/dgates/documents/predictive_modeling/riskview-pa-svcs'
-    alias ca='cd C:/users/dgates/documents/commercial/commercial-analytics'
-    alias ftf='cd C:/users/dgates/documents/commercial/ftf/ftf_calculation'
-    alias rvc='cd C:/users/dgates/documents/riskview-commercial-db'
-    alias tutorials='cd C:/users/dgates/documents/predictive_modeling/tutorials'
-    alias code='cd C:/users/dgates/documents/code'
-    alias pyinstallation='cd C:/WinPython-64bit-3.4.3.5/python-3.4.3.amd64/Lib/site-packages'
-
-    alias pag1='ssh dgates@10.229.0.29'
-    alias pag2='ssh dgates@10.229.0.31'
-fi
-
-
 if [ "$(iscauchy)" -eq 1 ]; then
    echo 'executing' $(basename $BASH_SOURCE) 'for CAUCHY'
    alias downloads='cd /home/dante_gates/downloads'
