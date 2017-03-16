@@ -1,0 +1,102 @@
+[
+  // PANEL VIEWS
+
+  { "keys": ["super+r"], "command": "toggle_side_bar" },
+  {
+  "keys": ["super+1"],
+    "command": "set_layout",
+    "args":
+    {
+      "cols": [0.0, 1.0],
+      "rows": [0.0, 1.0],
+      "cells": [[0, 0, 1, 1]]
+    }
+  },
+  {
+  "keys": ["super+2"],
+    "command": "set_layout",
+    "args":
+    {
+      "cols": [0.0, 0.5, 1.0],
+      "rows": [0.0, 1.0],
+      "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
+    }
+  },
+  {
+  "keys": ["super+3"],
+    "command": "set_layout",
+    "args":
+    {
+      "cols": [0.0, 0.33, 0.66, 1.0],
+      "rows": [0.0, 1.0],
+      "cells": [[0, 0, 1, 1], [1, 0, 2, 1], [2, 0, 3, 1]]
+    }
+  },
+  { "keys": ["alt+0"], "command": "focus_side_bar" },
+  { "keys": ["alt+1"], "command": "focus_group", "args": { "group": 0 } },
+  { "keys": ["alt+2"], "command": "focus_group", "args": { "group": 1 } },
+  { "keys": ["alt+3"], "command": "focus_group", "args": { "group": 2 } },
+
+// Modified Sublime-REPL keybindings for an "R-friendly" set of shortcuts.
+// Copy and paste this text into the Key Bindings - User (under Preferences menu).
+// For more information, see http://tomschenkjr.net/2012/05/17/using-sublime-text-2-for-r/
+ 
+{ "keys": ["super+shift+c"], "command": "repl_clear" },
+
+// Executes a selection of text in REPL, latter only displays code and does not execute
+{ "keys": ["super+shift+r"], "command": "repl_transfer_current", "args": {"scope": "selection"}},
+{ "keys": ["super+shift+r", "r"], "command": "repl_transfer_current", "args": {"scope": "selection", "action":"view_write"}},
+ 
+// Executes the entire file (build) in REPL, latter only displays code and does not execute
+{ "keys": ["super + f7"], "command": "repl_transfer_current", "args": {"scope": "file"}},
+{ "keys": ["super + f7", "r"], "command": "repl_transfer_current", "args": {"scope": "file", "action":"view_write"}},
+ 
+// Executes line(s) of text in REPL terminal, latter onlyf displays code and does not execute
+{ "keys": ["super+alt+r"], "command": "repl_transfer_current", "args": {"scope": "lines"}},
+{ "keys": ["super+alt+r", "r"], "command": "repl_transfer_current", "args": {"scope": "lines", "action":"view_write"}},
+ 
+// Executes a block (e.g., a custom function) of text in REPL terminal, latter only displays code and does not execute
+{ "keys": ["super+shift+alt+r"], "command": "repl_transfer_current", "args": {"scope": "block"}},
+{ "keys": ["super+shift+alt+r", "r"], "command": "repl_transfer_current", "args": {"scope": "block", "action":"view_write"}},
+
+{ "keys": ["super+r,k"], "command": "repl_kill" },
+
+// Scroll through auto complete
+{
+    "keys": ["super+space"],
+    "command": "move",
+    "args": {"by": "lines", "forward": true},
+    "context":
+        [
+            { "key": "auto_complete_visible", "operator": "equal", "operand": true }
+        ]
+},
+{
+    "keys": ["super+'"],
+    "command": "move",
+    "args": {"by": "lines", "forward": false},
+    "context":
+        [
+            { "key": "auto_complete_visible", "operator": "equal", "operand": true }
+        ]
+},
+{ "keys": ["super+u"], "command": "move", "args": {"by": "characters", "forward": false} },
+  { "keys": ["shift+super+o"], "command": "move", "args": {"by": "characters", "forward": true, "extend": true} },
+ { "keys": ["shift+super+u"], "command": "move", "args": {"by": "characters", "forward": false, "extend": true} },
+  { "keys": ["super+o"], "command": "move", "args": {"by": "characters", "forward": true} },
+  { "keys": ["super+i"], "command": "move", "args": {"by": "lines", "forward": false} },
+  { "keys": ["super+k"], "command": "move", "args": {"by": "lines", "forward": true} },
+  { "keys": ["super+shift+i"], "command": "move", "args": {"by": "lines", "forward": false, "extend": true} },
+  { "keys": ["super+shift+k"], "command": "move", "args": {"by": "lines", "forward": true, "extend": true} },
+  { "keys": ["super+j"], "command": "move", "args": {"by": "words", "forward": false} },
+  { "keys": ["super+l"], "command": "move", "args": {"by": "word_ends", "forward": true} },
+  { "keys": ["super+shift+j"], "command": "move", "args": {"by": "words", "forward": false, "extend": true} },
+  { "keys": ["super+shift+l"], "command": "move", "args": {"by": "word_ends", "forward": true, "extend": true} },
+  { "keys": ["super+h"], "command": "move_to", "args": {"to": "bol", "extend": false} },
+  { "keys": ["super+;"], "command": "move_to", "args": {"to": "eol", "extend": false} },
+  { "keys": ["shift+super+h"], "command": "move_to", "args": {"to": "bol", "extend": true} },
+  { "keys": ["shift+super+;"], "command": "move_to", "args": {"to": "eol", "extend": true} },
+  { "keys": ["super+n", "super+d"], "command": "find_under_expand_skip" },
+{ "keys": ["super+alt+l"], "command": "split_selection_into_lines" }
+ 
+]
