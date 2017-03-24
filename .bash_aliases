@@ -13,9 +13,10 @@ alias gdc='git diff --cached -w'
 alias gb='git branch'
 
 # python
-alias ipy=ipython
-alias ipython='ipython --profile=dgates'
+alias ipy='ipython --profile=dgates'
+alias ipy2='ipython2.7'
 alias nb='jupyter notebook'
+alias nb2='jupyter2.7 notebook'
 alias nbconvert='jupyter nbconvert'
 
 # emacs
