@@ -97,6 +97,8 @@
   { "keys": ["shift+super+h"], "command": "move_to", "args": {"to": "bol", "extend": true} },
   { "keys": ["shift+super+;"], "command": "move_to", "args": {"to": "eol", "extend": true} },
   { "keys": ["super+n", "super+d"], "command": "find_under_expand_skip" },
-{ "keys": ["super+alt+l"], "command": "split_selection_into_lines" }
+{ "keys": ["super+ctrl+l"], "command": "split_selection_into_lines" },
+  { "keys": ["super+shift+1"], "command": "move_to_group", "args": { "group": 0 } },
+  { "keys": ["super+shift+2"], "command": "move_to_group", "args": { "group": 1 } }
  
 ]
