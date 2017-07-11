@@ -24,6 +24,7 @@ alias ipy2='ipython2.7'
 alias nb='jupyter notebook'
 alias nb2='jupyter2.7 notebook'
 alias nbconvert='jupyter nbconvert'
+alias activate = 'source venv/bin/activate'
 
 # emacs
 alias emacs='emacs -nw --load "~/home/.emacs"'
