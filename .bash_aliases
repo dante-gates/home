@@ -8,11 +8,15 @@ alias ggrep='grep --color=None'
 # git
 alias gs='clear && git status'
 alias gitshort='git status --short'
-alias gco='git checkout'
-alias gmm='git checkout master && git merge '
 alias gpo='git push origin '
 alias gdc='git diff --cached -w'
 alias gb='git branch'
+alias gd='git diff'
+alias ga='git add'
+alias gc='git checkout'
+alias gm='git merge'
+alias gco='git commit'
+alias gp='git push'
 
 # python
 alias ipy='ipython --profile=dgates'
