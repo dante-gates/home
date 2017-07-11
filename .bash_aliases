@@ -2,6 +2,8 @@ echo 'executing' $(basename $BASH_SOURCE)
 
 # system
 alias cl='clear'
+# colorless grep for piping into programs that don't like the escape chars
+alias ggrep='grep --color=None'
 
 # git
 alias gs='clear && git status'
