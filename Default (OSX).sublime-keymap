@@ -99,6 +99,7 @@
   { "keys": ["super+n", "super+d"], "command": "find_under_expand_skip" },
 { "keys": ["super+ctrl+l"], "command": "split_selection_into_lines" },
   { "keys": ["super+shift+1"], "command": "move_to_group", "args": { "group": 0 } },
-  { "keys": ["super+shift+2"], "command": "move_to_group", "args": { "group": 1 } }
+  { "keys": ["super+shift+2"], "command": "move_to_group", "args": { "group": 1 } },
+  { "keys": ["super+shift+3"], "command": "move_to_group", "args": { "group": 3 } }
  
 ]
