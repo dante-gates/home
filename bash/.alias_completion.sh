@@ -43,14 +43,25 @@ function wrap_alias() {
 
   local wrapper_name="${namespace}${alias_name}"
 
-  eval "
-function ${wrapper_name}() {
-  let COMP_CWORD+=$num_alias_arguments
-  args=( \"${alias_arguments}\" )
-  COMP_WORDS=( $aliased_command \${args[@]} \${COMP_WORDS[@]:1} )
-  $completion_function
-  }
-"
+  if [ $OSTYPE == darwin16 ]; then
+    eval "
+      function ${wrapper_name}() {
+        let COMP_CWORD+=$num_alias_arguments
+        args=( \"${alias_arguments}\" )
+        COMP_WORDS=( $aliased_command \${args[@]} \${COMP_WORDS[@]:1} )
+        $completion_function
+        }
+      "
+  else
+    eval "
+      function ${wrapper_name}() {
+        let ((COMP_CWORD+=$num_alias_arguments))
+        args=( \"${alias_arguments}\" )
+        COMP_WORDS=( $aliased_command \${args[@]} \${COMP_WORDS[@]:1} )
+        $completion_function
+        }
+      "
+  fi
 
   # To create the new completion we use the old one with two
   # replacements:
